@@ -10,12 +10,16 @@ export const Register = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
+    lastName: "",
+    nickName: "",
     email: "",
     password: "",
   });
 
   const [userError, setUserError] = useState({
     nameError: "",
+    lastNameError: "",
+    nickNameError: "",
     emailError: "",
     passwordError: "",
   });
@@ -71,6 +75,30 @@ export const Register = () => {
           onBlurFunction={(e) => checkError(e)}
         />
         <div className="error">{userError.nameError}</div>
+        <CInput
+          className={`inputDesign ${
+            userError.lastNameError !== "" ? "inputDesignError" : ""
+          }`}
+          type={"text"}
+          placeHolder={"Apellido"}
+          name={"lastName"}
+          value={user.lastName || ""}
+          onChangeFunction={(e) => inputHandler(e)}
+          onBlurFunction={(e) => checkError(e)}
+        />
+        <div className="error">{userError.lastNameError}</div>
+        <CInput
+          className={`inputDesign ${
+            userError.nickNameError !== "" ? "inputDesignError" : ""
+          }`}
+          type={"text"}
+          placeHolder={"Alias"}
+          name={"nickName"}
+          value={user.nickName || ""}
+          onChangeFunction={(e) => inputHandler(e)}
+          onBlurFunction={(e) => checkError(e)}
+        />
+        <div className="error">{userError.nickNameError}</div>
         <CInput
           className={`inputDesign ${
             userError.emailError !== "" ? "inputDesignError" : ""

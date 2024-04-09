@@ -20,7 +20,7 @@ export const Header = () => {
         <CLink path={"/"} title={"Home"} />
         {rdxUser?.credentials?.token ? (
           <div className="navigator-design">
-            <CLink path="/profile" title={rdxUser?.credentials?.user?.userId} />
+            <CLink path="/profile" title={rdxUser?.credentials?.user?.nick} />
             <div
               className="out-design"
               onClick={() => dispatch(logout({ credentials: "" }))}

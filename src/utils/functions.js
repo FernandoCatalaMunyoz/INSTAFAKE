@@ -4,11 +4,20 @@ export const validame = (type, value) => {
     case "nombre":
     case "surname":
     case "cognom":
-    case "last_name":
       if (value.length < 3) {
         return "Por favor, el nombre debe de tener mínimo tres caracteres.";
       }
+      return "";
+    case "lastName":
+      if (value.length < 3) {
+        return "Por favor, el apellido debe de tener mínimo tres caracteres.";
+      }
+      return "";
 
+    case "nickName":
+      if (value.length < 3) {
+        return "Por favor, el alias debe de tener mínimo tres caracteres.";
+      }
       return "";
 
     case "email":
@@ -20,7 +29,7 @@ export const validame = (type, value) => {
       if (!emailRegex.test(value)) {
         return "Por favor, el formato del email debe de ser correcto.";
       }
-
+      return "";
     case "password":
     case "contraseña":
       const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,14}$/;
