@@ -1,11 +1,11 @@
 .header-design {
-  height: 12vh;
+  height: 10vh;
   width: 100vw;
 
   background-color: darkcyan;
 
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-end;
 }
 
@@ -27,4 +27,17 @@
   transition: 0.3s;
   color: black;
   cursor: pointer;
+}
+.navigate {
+  display: flex;
+  flex-direction: row;
+}
+
+.title {
+  padding-bottom: 1em;
+  margin: 1em;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
