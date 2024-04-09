@@ -2,12 +2,13 @@ import "./Header.css";
 import { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { userData } from "../../app/slices/userSlice";
+import { userData, logout } from "../../app/slices/userSlice";
 import { CLink } from "./CLink/CLink";
 
 export const Header = () => {
   //Instancia del modo lectura
   const rdxUser = useSelector(userData);
+  console.log(rdxUser, "rdxUser");
 
   //Instancia del modo escritura
   const dispatch = useDispatch();
@@ -19,10 +20,10 @@ export const Header = () => {
         <CLink path={"/"} title={"Home"} />
         {rdxUser?.credentials?.token ? (
           <div className="navigator-design">
-            <CLink path="/profile" title={rdxUser?.credentials?.user?.name} />
+            <CLink path="/profile" title={rdxUser?.credentials?.user?.userId} />
             <div
               className="out-design"
-              // onClick={() => dispatch(logout({ credentials: "" }))}
+              onClick={() => dispatch(logout({ credentials: "" }))}
             >
               log out
             </div>
