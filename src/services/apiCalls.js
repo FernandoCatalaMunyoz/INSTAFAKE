@@ -10,7 +10,7 @@ export const RegisterUser = async (user) => {
   };
 
   try {
-    const response = await fetch(`${root}register`, options);
+    const response = await fetch(`${root}/auth/register`, options);
 
     const data = await response.json();
 

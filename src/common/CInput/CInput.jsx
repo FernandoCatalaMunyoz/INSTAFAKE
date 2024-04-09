@@ -1,4 +1,4 @@
-import "./CInput.css";
+import "./Cinput.css";
 
 export const CInput = ({
   className,
