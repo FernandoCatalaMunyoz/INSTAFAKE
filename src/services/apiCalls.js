@@ -24,7 +24,7 @@ export const RegisterUser = async (user) => {
   }
 };
 
-export const loginUser = async (user) => {
+export const LoginUser = async (user) => {
   const options = {
     method: "POST",
     headers: {

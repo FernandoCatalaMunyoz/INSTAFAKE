@@ -5,7 +5,7 @@ import { useState } from "react";
 import { CInput } from "../../common/CInput/CInput";
 import { decodeToken } from "react-jwt";
 
-import { loginUser } from "../../services/apiCalls";
+import { LoginUser } from "../../services/apiCalls";
 import { login } from "../../app/slices/userSlice";
 
 export const Login = () => {
@@ -25,7 +25,7 @@ export const Login = () => {
     }));
   };
   const loginMe = async () => {
-    const fetched = await loginUser(user);
+    const fetched = await LoginUser(user);
 
     if (fetched.token) {
       const decodificado = decodeToken(fetched.token);
