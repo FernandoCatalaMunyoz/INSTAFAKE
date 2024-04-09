@@ -82,6 +82,7 @@ export const Register = () => {
           onChangeFunction={(e) => inputHandler(e)}
           onBlurFunction={(e) => checkError(e)}
         />
+        <div className="error">{userError.emailError}</div>
         <CInput
           className={`inputDesign ${
             userError.passwordError !== "" ? "inputDesignError" : ""
@@ -93,6 +94,7 @@ export const Register = () => {
           onChangeFunction={(e) => inputHandler(e)}
           onBlurFunction={(e) => checkError(e)}
         />
+        <div className="error">{userError.passwordError}</div>
         <CButton
           className={"cButtonDesign"}
           title={"Register"}

@@ -21,8 +21,6 @@ export const validame = (type, value) => {
         return "Por favor, el formato del email debe de ser correcto.";
       }
 
-      return "";
-
     case "password":
     case "contraseña":
       const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,14}$/;
