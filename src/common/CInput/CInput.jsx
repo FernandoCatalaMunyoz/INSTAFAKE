@@ -5,6 +5,8 @@ export const CInput = ({
   type,
   placeHolder,
   name,
+  lastName,
+  email,
   disabled,
   value,
   onChangeFunction,
@@ -16,6 +18,8 @@ export const CInput = ({
       type={type}
       placeholder={placeHolder}
       name={name}
+      lastName={lastName}
+      email={email}
       disabled={disabled}
       value={value}
       onChange={onChangeFunction}
