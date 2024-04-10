@@ -22,3 +22,22 @@
   width: 10em;
   height: 10em;
 }
+
+.cardTitle {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.likeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 3em;
+  background-color: green;
+}
+.likeSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
