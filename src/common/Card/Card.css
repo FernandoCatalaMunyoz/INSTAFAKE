@@ -1,0 +1,24 @@
+.cardDesign {
+  height: 15em;
+  width: 10em;
+
+  border-radius: 0.5em;
+  background-color: cadetblue;
+
+  transition: 0.5s;
+
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.cardDesign:hover {
+  transition: 0.5s;
+  background-color: greenyellow;
+  transform: scale(1.15);
+}
+
+.avatarDesign {
+  width: 10em;
+  height: 10em;
+}

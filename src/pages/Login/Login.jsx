@@ -26,7 +26,7 @@ export const Login = () => {
   };
   const loginMe = async () => {
     const fetched = await LoginUser(user);
-
+    // console.log(fetched, "fetched");
     if (fetched.token) {
       const decodificado = decodeToken(fetched.token);
 
@@ -34,7 +34,7 @@ export const Login = () => {
         token: fetched.token,
         user: decodificado,
       };
-      console.log(passport, "passport");
+
       dispatch(login({ credentials: passport }));
       setTimeout(() => {
         navigate("/");
@@ -44,15 +44,18 @@ export const Login = () => {
 
   return (
     <div className="loginDesign">
+      <div>Inicio de sesión</div>
       <CInput
         type={"email"}
         name={"email"}
+        placeHolder={"Email"}
         value={user.email || ""}
         onChangeFunction={inputHandler}
       />
       <CInput
         type={"password"}
         name={"password"}
+        placeHolder={"Contraseña"}
         value={user.password || ""}
         onChangeFunction={inputHandler}
       />

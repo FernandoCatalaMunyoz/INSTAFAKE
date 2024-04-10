@@ -8,7 +8,6 @@ import { CLink } from "./CLink/CLink";
 export const Header = () => {
   //Instancia del modo lectura
   const rdxUser = useSelector(userData);
-  console.log(rdxUser, "rdxUser");
 
   //Instancia del modo escritura
   const dispatch = useDispatch();
@@ -20,7 +19,10 @@ export const Header = () => {
         <CLink path={"/"} title={"Home"} />
         {rdxUser?.credentials?.token ? (
           <div className="navigator-design">
-            <CLink path="/profile" title={rdxUser?.credentials?.user?.name} />
+            <CLink
+              path="/profile"
+              title={rdxUser?.credentials?.user?.nickName}
+            />
             <div
               className="out-design"
               onClick={() => dispatch(logout({ credentials: "" }))}

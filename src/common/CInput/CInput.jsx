@@ -5,8 +5,6 @@ export const CInput = ({
   type,
   placeHolder,
   name,
-  lastName,
-  email,
   disabled,
   value,
   onChangeFunction,
@@ -14,12 +12,10 @@ export const CInput = ({
 }) => {
   return (
     <input
-      className={className}
+      className={"inputDesign"}
       type={type}
       placeholder={placeHolder}
       name={name}
-      lastName={lastName}
-      email={email}
       disabled={disabled}
       value={value}
       onChange={onChangeFunction}

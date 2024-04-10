@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export const Register = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    name: "",
+    firstName: "",
     lastName: "",
     nickName: "",
     email: "",
@@ -17,7 +17,7 @@ export const Register = () => {
   });
 
   const [userError, setUserError] = useState({
-    nameError: "",
+    firstNameError: "",
     lastNameError: "",
     nickNameError: "",
     emailError: "",
@@ -69,8 +69,8 @@ export const Register = () => {
           }`}
           type={"text"}
           placeHolder={"Nombre"}
-          name={"name"}
-          value={user.name || ""}
+          name={"firstName"}
+          value={user.firstName || ""}
           onChangeFunction={(e) => inputHandler(e)}
           onBlurFunction={(e) => checkError(e)}
         />

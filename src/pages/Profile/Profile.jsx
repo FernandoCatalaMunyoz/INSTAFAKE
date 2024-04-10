@@ -1,17 +1,17 @@
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { userData } from "../../app/slices/userSlice";
+import { profile, userData } from "../../app/slices/userSlice";
 import { useState, useEffect } from "react";
 import { CInput } from "../../common/CInput/CInput";
-import { GetProfile } from "../../services/apiCalls";
+import { CButton } from "../../common/CButton/CButton";
+import { GetProfile, UpdateProfile } from "../../services/apiCalls";
 
 export const Profile = () => {
   const navigate = useNavigate();
 
   const rdxUser = useSelector(userData);
   const dispatch = useDispatch();
-  console.log(rdxUser);
 
   const [tokenStorage, setTokenStorage] = useState(rdxUser?.credentials?.token);
   const [loadedData, setLoadedData] = useState(false);
@@ -37,20 +37,19 @@ export const Profile = () => {
     }));
   };
   useEffect(() => {
-    if (!rdxUser.credentials.token) {
+    if (!rdxUser?.credentials?.token) {
       navigate("/");
     }
-  }, [rdxUser]);
+  }, [rdxUser.credentials.token]);
   useEffect(() => {
     const getUserProfile = async () => {
       try {
         const fetched = await GetProfile(tokenStorage);
-        console.log(fetched, "fetcheadordxUser");
 
         setUser({
-          nickName: fetched.data.nickName,
-          name: fetched.data.name,
+          firstName: fetched.data.firstName,
           lastName: fetched.data.lastName,
+          nickName: fetched.data.nickName,
           email: fetched.data.email,
         });
         setLoadedData(true);
@@ -60,6 +59,31 @@ export const Profile = () => {
       getUserProfile();
     }
   }, [tokenStorage]);
+
+  const updateData = async () => {
+    try {
+      console.log(rdxUser, "rdx");
+      const userDatatoUpdate = await UpdateProfile(
+        rdxUser?.credentials?.token,
+        user
+      );
+
+      setUser(userDatatoUpdate);
+      // setUser({
+      //   firstName: userDatatoUpdate.data.firstName,
+      //   lastName: userDatatoUpdate.data.lastName,
+      //   nickName: userDatatoUpdate.data.nickName,
+      //   email: userDatatoUpdate.data.nickName,
+      // });
+
+      setLoadedData(false);
+      setWrite("disabled");
+
+      dispatch(profile({ credentials: userData }));
+    } catch (error) {
+      console.error("Error al actualizar el perfil", error);
+    }
+  };
 
   return (
     <div className="profileDesign">
@@ -72,7 +96,7 @@ export const Profile = () => {
             className={"inputDesign"}
             type={"text"}
             placeHolder={"Nickname"}
-            name={"Nickname"}
+            name={"nickName"}
             disabled={write}
             value={user.nickName || ""}
             onChangeFunction={(e) => inputHandler(e)}
@@ -84,7 +108,7 @@ export const Profile = () => {
             placeHolder={"Nombre"}
             name={"firstName"}
             disabled={write}
-            value={user.name || ""}
+            value={user.firstName || ""}
             onChangeFunction={(e) => inputHandler(e)}
           />
           <div>Apellido</div>
@@ -106,6 +130,13 @@ export const Profile = () => {
             disabled={write}
             value={user.email || ""}
             onChangeFunction={(e) => inputHandler(e)}
+          />
+          <CButton
+            className={
+              write === "" ? "cButtonGreen cButtonDesign" : "cButtonDesign"
+            }
+            title={write === "" ? "Confirmar" : "Editar"}
+            functionEmit={write === "" ? updateData : () => setWrite("")}
           />
         </div>
       )}
