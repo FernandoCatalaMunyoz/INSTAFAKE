@@ -14,7 +14,7 @@
 
 .cardDesign:hover {
   transition: 0.5s;
-  background-color: greenyellow;
+  background-color: lightblue;
   transform: scale(1.15);
 }
 
@@ -40,4 +40,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.cardLikes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em;
+  padding-left: 0.5em;
 }

@@ -39,8 +39,9 @@ export const Home = () => {
                     <Card
                       key={post._id}
                       title={post.title}
+                      ownerName={post.ownerName}
                       description={post.description}
-                      likes={post.likes}
+                      likes={post.likes.length}
                       photo={post.photo}
                     ></Card>
                   );
