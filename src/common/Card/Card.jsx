@@ -9,9 +9,9 @@ export const Card = ({
 }) => {
   return (
     <div className="cardDesign" onClick={clickFunction}>
-      <div>
+      {/* <div>
         <img className="avatarDesign" src={photo} alt={title} />
-      </div>
+      </div> */}
       <div>{title}</div>
       <div>{description}</div>
       <div>{likes}</div>

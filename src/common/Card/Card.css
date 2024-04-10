@@ -1,6 +1,6 @@
 .cardDesign {
-  height: 15em;
-  width: 10em;
+  height: auto;
+  width: 25em;
 
   border-radius: 0.5em;
   background-color: cadetblue;
