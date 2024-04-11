@@ -2,7 +2,7 @@ import "./Admin.css";
 import { useSelector, useDispatch } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
 import { useEffect, useState } from "react";
-import { GetPosts } from "../../services/apiCalls";
+import { GetPosts, GetUsers } from "../../services/apiCalls";
 import { Card } from "../../common/Card/Card";
 import { useNavigate } from "react-router-dom";
 
@@ -13,6 +13,7 @@ export const Admin = () => {
   const token = rdxUser?.credentials?.token;
 
   const [posts, setPosts] = useState([]);
+  const [users, setUsers] = useState([]);
   const [loadedData, setLoadedData] = useState(false);
 
   if (rdxUser?.credentials?.user?.roleName !== "super_admin") {
@@ -30,6 +31,14 @@ export const Admin = () => {
       bringPosts();
     }
   }, [posts]);
+  useEffect(() => {
+    const bringUsers = async () => {
+      const fetched = await GetUsers(token);
+      console.log(fetched, "fetched");
+      setUsers(fetched.data);
+    };
+    bringUsers();
+  }, [users]);
   return (
     <div className="adminDesign">
       <div className="usersDesign">Hola</div>

@@ -138,3 +138,25 @@ export const GiveLike = async (token, id) => {
     return error;
   }
 };
+
+export const GetUsers = async (token) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const response = await fetch(`${root}users`, options);
+    const data = await response.json();
+    console.log(data, "data");
+
+    if (!data.succes) {
+      throw new Error(data.message);
+    }
+    return data.data;
+  } catch (error) {
+    return error;
+  }
+};
