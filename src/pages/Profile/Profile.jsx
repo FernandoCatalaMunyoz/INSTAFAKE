@@ -58,7 +58,7 @@ export const Profile = () => {
     if (!loadedData) {
       getUserProfile();
     }
-  }, [tokenStorage]);
+  }, [loadedData]);
 
   const updateData = async () => {
     try {
@@ -69,20 +69,13 @@ export const Profile = () => {
       );
 
       setUser(userDatatoUpdate);
-      // setUser({
-      //   firstName: userDatatoUpdate.data.firstName,
-      //   lastName: userDatatoUpdate.data.lastName,
-      //   nickName: userDatatoUpdate.data.nickName,
-      //   email: userDatatoUpdate.data.nickName,
-      // });
 
       setLoadedData(false);
       setWrite("disabled");
-
-      dispatch(profile({ credentials: userData }));
     } catch (error) {
       console.error("Error al actualizar el perfil", error);
     }
+    setLoadedData(false);
   };
 
   return (
