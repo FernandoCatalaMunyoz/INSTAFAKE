@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { CInput } from "../../common/CInput/CInput";
 import { decodeToken } from "react-jwt";
-
+import { userData } from "../../app/slices/userSlice";
 import { LoginUser } from "../../services/apiCalls";
 import { login } from "../../app/slices/userSlice";
 
@@ -13,6 +13,13 @@ export const Login = () => {
 
   //instancia redux para escritura
   const dispatch = useDispatch();
+  const rdxUser = useSelector(userData);
+  const token = rdxUser?.credentials?.token;
+  if (token) {
+    setTimeout(() => {
+      navigate("/");
+    });
+  }
 
   const [user, setUser] = useState({
     email: "",

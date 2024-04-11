@@ -20,25 +20,13 @@ export const Home = () => {
         setPosts(fetched);
       } catch (error) {}
     };
-
-    bringPosts();
+    if (token) {
+      bringPosts();
+    }
   }, [posts]);
 
   const giveLike = async (id) => {
     const fetched = await GiveLike(token, id);
-
-    // setPosts(
-    //   posts.map((item) =>
-    //     item._id === posts._id
-    //       ? {
-    //           ...item,
-    //           likes: posts.likes.includes(rdxUser.credentials.user._id)
-    //             ? item.likes.filter((id) => id !== rdxUser.credentials.user._id)
-    //             : [...item.likes, rdxUser.credentials.user._id],
-    //         }
-    //       : item
-    //   )
-    // );
   };
 
   return (

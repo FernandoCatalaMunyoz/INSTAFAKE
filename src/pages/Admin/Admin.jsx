@@ -15,11 +15,11 @@ export const Admin = () => {
   const [posts, setPosts] = useState([]);
   const [loadedData, setLoadedData] = useState(false);
 
-  //   if (rdxUser.credentials.user.roleName !== "super_admin") {
-  //     setTimeout(() => {
-  //       navigate("/");
-  //     });
-  //   }
+  if (rdxUser?.credentials?.user?.roleName !== "super_admin") {
+    setTimeout(() => {
+      navigate("/");
+    });
+  }
 
   useEffect(() => {
     if (posts.length === 0) {
