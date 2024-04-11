@@ -35,12 +35,12 @@ export const Admin = () => {
   useEffect(() => {
     const bringUsers = async () => {
       const fetched = await GetUsers(token);
-      console.log(fetched, "fetched");
+
       setUsers(fetched);
     };
     bringUsers();
   }, [users]);
-  console.log(users, "users");
+
   return (
     <div className="adminDesign">
       <div className="usersDesign">
@@ -50,7 +50,7 @@ export const Admin = () => {
               {users.map((user) => {
                 return (
                   <UserCard
-                    key={user.id}
+                    key={user._id}
                     firstName={user.firstName}
                     lastName={user.lastName}
                     nickName={user.nickName}

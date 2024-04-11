@@ -150,7 +150,6 @@ export const GetUsers = async (token) => {
   try {
     const response = await fetch(`${root}users`, options);
     const data = await response.json();
-    console.log(data, "data");
 
     if (!data.succes) {
       throw new Error(data.message);

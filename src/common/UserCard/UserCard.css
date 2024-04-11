@@ -1,0 +1,27 @@
+.userCardDesign {
+  height: auto;
+  width: 25em;
+
+  border-radius: 0.5em;
+  background-color: cadetblue;
+
+  transition: 0.5s;
+
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+.userCardDesign:hover {
+  transition: 0.5s;
+  background-color: lightblue;
+  transform: scale(1.15);
+}
+
+.titleUserCard {
+  margin-left: 0.2em;
+  padding-left: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
