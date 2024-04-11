@@ -99,7 +99,7 @@ export const UpdateProfile = async (token, data) => {
   }
 };
 
-export const getPosts = async (token) => {
+export const GetPosts = async (token) => {
   const options = {
     method: "GET",
     headers: {
@@ -116,6 +116,25 @@ export const getPosts = async (token) => {
       throw new Error(data.message);
     }
     return data.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const GiveLike = async (token, id) => {
+  console.log(id, "id");
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const response = await fetch(`${root}post/like/${id}`, options);
+    console.log(response, "response");
+    const data = await response.json();
+    return data;
   } catch (error) {
     return error;
   }

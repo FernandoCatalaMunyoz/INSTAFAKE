@@ -8,7 +8,7 @@ import { CLink } from "./CLink/CLink";
 export const Header = () => {
   //Instancia del modo lectura
   const rdxUser = useSelector(userData);
-
+  console.log(rdxUser, "rdxUser");
   //Instancia del modo escritura
   const dispatch = useDispatch();
 
@@ -23,6 +23,11 @@ export const Header = () => {
               path="/profile"
               title={rdxUser?.credentials?.user?.nickName}
             />
+            {rdxUser.credentials.user.roleName === "super_admin" ? (
+              <div>HOla</div>
+            ) : (
+              <CLink path={"/admin"} title={"Admin"} />
+            )}
             <div
               className="out-design"
               onClick={() => dispatch(logout({ credentials: "" }))}

@@ -1,4 +1,4 @@
-.homeDesign {
+.adminDesign {
   height: 90vh;
   width: 100vw;
 
@@ -9,12 +9,4 @@
   justify-content: center;
   overflow: auto;
   align-items: center;
-}
-
-img {
-  height: 90vh;
-  width: 100vw;
-}
-.cardsRoaster {
-  flex-wrap: wrap-reverse;
 }

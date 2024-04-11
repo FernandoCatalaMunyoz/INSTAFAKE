@@ -10,9 +10,6 @@ export const Card = ({
 }) => {
   return (
     <div className="cardDesign" onClick={clickFunction}>
-      {/* <div>
-        <img className="avatarDesign" src={photo} alt={title} />
-      </div> */}
       <div className="cardTitle">{title}</div>
       <div className="ownerName">{ownerName}</div>
       <div className="cardDescription">{description}</div>
@@ -21,7 +18,7 @@ export const Card = ({
         <div>{likes}</div>
       </div>
       <div className="likeSection">
-        <div className="likeButton" onClick={clickFunction}>
+        <div className="likeButton" onClick={() => clickFunction}>
           Like
         </div>
       </div>
