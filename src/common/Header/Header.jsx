@@ -24,15 +24,17 @@ export const Header = () => {
               title={rdxUser?.credentials?.user?.nickName}
             />
             {rdxUser.credentials.user.roleName === "super_admin" ? (
-              <div>HOla</div>
+              <div>
+                <CLink path={"/admin"} title={"Admin"} />
+              </div>
             ) : (
-              <CLink path={"/admin"} title={"Admin"} />
+              <div>No eres super admin</div>
             )}
             <div
               className="out-design"
               onClick={() => dispatch(logout({ credentials: "" }))}
             >
-              log out
+              <CLink path={"/"} title={"Logout"} />
             </div>
           </div>
         ) : (

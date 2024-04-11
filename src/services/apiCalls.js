@@ -110,7 +110,6 @@ export const GetPosts = async (token) => {
   try {
     const response = await fetch(`${root}post`, options);
     const data = await response.json();
-    console.log(data, "data");
 
     if (!data.success) {
       throw new Error(data.message);

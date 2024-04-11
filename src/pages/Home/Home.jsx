@@ -7,27 +7,25 @@ import { Card } from "../../common/Card/Card";
 
 export const Home = () => {
   const rdxUser = useSelector(userData);
-  console.log(rdxUser, "rdxUser");
+
   const token = rdxUser?.credentials?.token;
 
   const [posts, setPosts] = useState([]);
-  const [loadedData, setLoadedData] = useState(false);
 
   useEffect(() => {
-    if (posts.length === 0) {
-      const bringPosts = async () => {
+    const bringPosts = async () => {
+      try {
         const fetched = await GetPosts(token);
+
         setPosts(fetched);
-      };
-      bringPosts();
-    }
+      } catch (error) {}
+    };
+
+    bringPosts();
   }, [posts]);
 
   const giveLike = async (id) => {
-    console.log(id, "id");
     const fetched = await GiveLike(token, id);
-    console.log(fetched, "fetched");
-    console.log(posts, "posts");
 
     // setPosts(
     //   posts.map((item) =>
