@@ -7,8 +7,9 @@ import { Card } from "../../common/Card/Card";
 
 export const Home = () => {
   const rdxUser = useSelector(userData);
-  const token = rdxUser.credentials.token;
-  console.log(rdxUser, "rdxUser");
+
+  const token = rdxUser?.credentials?.token;
+  console.log(rdxUser.credentials.token, "rdxUser,credentials");
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -34,18 +35,20 @@ export const Home = () => {
           <div>
             {posts.length > 0 ? (
               <div className="cardsRoaster">
-                {posts.map((post) => {
-                  return (
-                    <Card
-                      key={post._id}
-                      title={post.title}
-                      ownerName={post.ownerName}
-                      description={post.description}
-                      likes={post.likes.length}
-                      photo={post.photo}
-                    ></Card>
-                  );
-                })}
+                {posts
+                  .map((post) => {
+                    return (
+                      <Card
+                        key={post._id}
+                        title={post.title}
+                        ownerName={post.ownerName}
+                        description={post.description}
+                        likes={post.likes.length}
+                        photo={post.photo}
+                      ></Card>
+                    );
+                  })
+                  .reverse()}
               </div>
             ) : (
               <div>Los personajes estan viniendo</div>

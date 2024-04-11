@@ -1,7 +1,7 @@
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { profile, userData } from "../../app/slices/userSlice";
+import { login, profile, userData } from "../../app/slices/userSlice";
 import { useState, useEffect } from "react";
 import { CInput } from "../../common/CInput/CInput";
 import { CButton } from "../../common/CButton/CButton";
