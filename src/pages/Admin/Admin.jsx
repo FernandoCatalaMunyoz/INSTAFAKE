@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { GetPosts, GetUsers } from "../../services/apiCalls";
 import { Card } from "../../common/Card/Card";
 import { useNavigate } from "react-router-dom";
+import { UserCard } from "../../common/UserCard/UserCard";
 
 export const Admin = () => {
   const navigate = useNavigate();
@@ -35,13 +36,34 @@ export const Admin = () => {
     const bringUsers = async () => {
       const fetched = await GetUsers(token);
       console.log(fetched, "fetched");
-      setUsers(fetched.data);
+      setUsers(fetched);
     };
     bringUsers();
   }, [users]);
+  console.log(users, "users");
   return (
     <div className="adminDesign">
-      <div className="usersDesign">Hola</div>
+      <div className="usersDesign">
+        <div>
+          {users.length > 0 ? (
+            <div className="cardsRoaster">
+              {users.map((user) => {
+                return (
+                  <UserCard
+                    key={user.id}
+                    firstName={user.firstName}
+                    lastName={user.lastName}
+                    nickName={user.nickName}
+                    email={user.email}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <div>Los usuarios estan viniendo</div>
+          )}
+        </div>
+      </div>
       <div className="postDesign">
         <div>
           {posts.length > 0 ? (
@@ -63,7 +85,7 @@ export const Admin = () => {
                 .reverse()}
             </div>
           ) : (
-            <div>Los personajes estan viniendo</div>
+            <div>Los posts estan viniendo</div>
           )}
         </div>
       </div>
