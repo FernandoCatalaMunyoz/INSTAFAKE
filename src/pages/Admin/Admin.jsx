@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export const Admin = () => {
   const navigate = useNavigate();
   const rdxUser = useSelector(userData);
-  console.log(rdxUser, "rdxUser");
+
   const token = rdxUser?.credentials?.token;
 
   const [posts, setPosts] = useState([]);
