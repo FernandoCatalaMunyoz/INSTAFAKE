@@ -156,3 +156,24 @@ export const GetUsers = async (token) => {
     return error;
   }
 };
+
+export const GetMyPosts = async (token) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const response = await fetch(`${root}post/own`, options);
+    const data = await response.json();
+
+    if (!data.success) {
+      throw new Error(data.message);
+    }
+    return data.data;
+  } catch (error) {
+    return error;
+  }
+};

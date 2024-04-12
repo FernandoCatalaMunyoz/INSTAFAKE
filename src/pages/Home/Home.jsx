@@ -1,5 +1,5 @@
 import "./Home.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
 import { useEffect, useState } from "react";
 import { GetPosts, GiveLike } from "../../services/apiCalls";
