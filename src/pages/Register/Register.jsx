@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RegisterUser } from "../../services/apiCalls";
 import { CInput } from "../../common/CInput/CInput";
 import { CButton } from "../../common/CButton/CButton";
 import "./Register.css";
 import { validame } from "../../utils/functions";
 import { useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const Register = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
@@ -40,6 +41,14 @@ export const Register = () => {
       [e.target.name + "Error"]: error,
     }));
   };
+  useEffect(() => {
+    toast.dismiss();
+    userError.firstNameError && toast.warn(userError.firstNameError);
+    userError.lastNameError && toast.warn(userError.lastNameError);
+    userError.nickNameError && toast.warn(userError.nickNameError);
+    userError.emailError && toast.warn(userError.emailError);
+    userError.passwordError && toast.warn(userError.passwordError);
+  }, [userError]);
 
   const registerMe = async () => {
     try {
@@ -51,10 +60,13 @@ export const Register = () => {
 
       const fetched = await RegisterUser(user);
       console.log(fetched, "fetcheado");
-
+      if ((fetched.success = true)) {
+        toast.success(fetched.message);
+        console.log("loggeado");
+      }
       setTimeout(() => {
         navigate("/");
-      }, 1200);
+      }, 2000);
     } catch (error) {
       setMsgError(error.message);
     }
@@ -127,6 +139,18 @@ export const Register = () => {
           className={"cButtonDesign"}
           title={"Register"}
           functionEmit={registerMe}
+        />
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
         />
       </div>
     </>

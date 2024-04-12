@@ -13,7 +13,7 @@ export const RegisterUser = async (user) => {
     const response = await fetch(`${root}/auth/register`, options);
 
     const data = await response.json();
-    console.log(data, "data");
+
     if (!data.success) {
       throw new Error(data.message);
     }
@@ -25,7 +25,6 @@ export const RegisterUser = async (user) => {
 };
 
 export const LoginUser = async (user) => {
-  console.log(user, "usuario");
   const options = {
     method: "POST",
     headers: {
@@ -53,7 +52,6 @@ export const LoginUser = async (user) => {
   }
 };
 export const GetProfile = async (token) => {
-  console.log(token, "token get profile");
   const options = {
     method: "GET",
     headers: {
@@ -85,11 +83,11 @@ export const UpdateProfile = async (token, data) => {
     },
     body: JSON.stringify(data),
   };
-  console.log(data, "data");
+
   try {
     const response = await fetch(`${root}users/profile`, options);
     const data = await response.json();
-    console.log(data, "data");
+
     if (!data.success) {
       throw new Error("data.message");
     }
@@ -121,7 +119,6 @@ export const GetPosts = async (token) => {
 };
 
 export const GiveLike = async (token, id) => {
-  console.log(id, "id");
   const options = {
     method: "PUT",
     headers: {
@@ -131,7 +128,7 @@ export const GiveLike = async (token, id) => {
   };
   try {
     const response = await fetch(`${root}post/like/${id}`, options);
-    console.log(response, "response");
+
     const data = await response.json();
     return data;
   } catch (error) {

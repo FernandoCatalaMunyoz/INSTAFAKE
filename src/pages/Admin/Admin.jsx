@@ -15,7 +15,6 @@ export const Admin = () => {
 
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
-  const [loadedData, setLoadedData] = useState(false);
 
   if (rdxUser?.credentials?.user?.roleName !== "super_admin") {
     setTimeout(() => {

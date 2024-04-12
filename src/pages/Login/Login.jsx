@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CInput } from "../../common/CInput/CInput";
 import { decodeToken } from "react-jwt";
 import { userData } from "../../app/slices/userSlice";
 import { LoginUser } from "../../services/apiCalls";
 import { login } from "../../app/slices/userSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -25,28 +27,52 @@ export const Login = () => {
     email: "",
     password: "",
   });
+  const [userError, setUserError] = useState({
+    firstNameError: "",
+    lastNameError: "",
+    nickNameError: "",
+    emailError: "",
+    passwordError: "",
+  });
   const inputHandler = (e) => {
     setUser((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
+
+  useEffect(() => {
+    toast.dismiss();
+    userError.firstNameError && toast.warn(userError.firstNameError);
+    userError.lastNameError && toast.warn(userError.lastNameError);
+    userError.nickNameError && toast.warn(userError.nickNameError);
+    userError.emailError && toast.warn(userError.emailError);
+    userError.passwordError && toast.warn(userError.passwordError);
+  }, [userError]);
+
   const loginMe = async () => {
-    const fetched = await LoginUser(user);
-    // console.log(fetched, "fetched");
-    if (fetched.token) {
-      const decodificado = decodeToken(fetched.token);
+    try {
+      const fetched = await LoginUser(user);
 
-      const passport = {
-        token: fetched.token,
-        user: decodificado,
-      };
+      if (fetched.token) {
+        const decodificado = decodeToken(fetched.token);
 
-      dispatch(login({ credentials: passport }));
-      setTimeout(() => {
-        navigate("/");
-      }, 500);
-    }
+        const passport = {
+          token: fetched.token,
+          user: decodificado,
+        };
+
+        console.log(fetched, "fetched");
+        if ((fetched.success = true)) {
+          toast.success(fetched.message);
+          console.log("loggeado");
+        }
+        dispatch(login({ credentials: passport }));
+        setTimeout(() => {
+          navigate("/");
+        }, 1200);
+      }
+    } catch (error) {}
   };
 
   return (
@@ -67,6 +93,18 @@ export const Login = () => {
         onChangeFunction={inputHandler}
       />
       <button onClick={loginMe}>Login</button>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

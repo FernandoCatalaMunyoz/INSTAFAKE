@@ -1,6 +1,6 @@
 export const validame = (type, value) => {
   switch (type) {
-    case "fistName":
+    case "firstName":
     case "nombre":
     case "surname":
     case "cognom":
