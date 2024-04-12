@@ -27,8 +27,23 @@ export const Home = () => {
 
   const giveLike = async (id) => {
     const fetched = await GiveLike(token, id);
-  };
+    //   if (fetched.data && fetched.data._id) {
+    //     console.log(fetched.data);
+    //     setPosts(posts.map((post) => (post.id === id ? fetched.data : post)));
+    //   }
+    // };
 
+    setPosts(
+      posts.map((post) =>
+        post._id === posts._id
+          ? {
+              ...post,
+              likes: fetched.data.likes,
+            }
+          : post
+      )
+    );
+  };
   return (
     <>
       <div className="homeDesign">

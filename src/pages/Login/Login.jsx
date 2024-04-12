@@ -20,7 +20,7 @@ export const Login = () => {
   if (token) {
     setTimeout(() => {
       navigate("/");
-    });
+    }, 2000);
   }
 
   const [user, setUser] = useState({
