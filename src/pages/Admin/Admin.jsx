@@ -2,10 +2,11 @@ import "./Admin.css";
 import { useSelector, useDispatch } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
 import { useEffect, useState } from "react";
-import { GetPosts, GetUsers } from "../../services/apiCalls";
-import { Card } from "../../common/Card/Card";
+import { GetPosts, GetUsers, GiveLike } from "../../services/apiCalls";
+
 import { useNavigate } from "react-router-dom";
 import { UserCard } from "../../common/UserCard/UserCard";
+import { UserCardAdmin } from "../../common/userCardAmin/userCardAdmin";
 
 export const Admin = () => {
   const navigate = useNavigate();
@@ -28,7 +29,9 @@ export const Admin = () => {
         const fetched = await GetPosts(token);
         setPosts(fetched);
       };
-      bringPosts();
+      if (token) {
+        bringPosts();
+      }
     }
   }, [posts]);
   useEffect(() => {
@@ -39,6 +42,21 @@ export const Admin = () => {
     };
     bringUsers();
   }, [users]);
+
+  const giveLike = async (id) => {
+    const fetched = await GiveLike(token, id);
+
+    setPosts(
+      posts.map((post) =>
+        post._id === posts._id
+          ? {
+              ...post,
+              likes: fetched.data.likes,
+            }
+          : post
+      )
+    );
+  };
 
   return (
     <div className="adminDesign">
@@ -70,15 +88,14 @@ export const Admin = () => {
               {posts
                 .map((post) => {
                   return (
-                    <Card
+                    <UserCardAdmin
                       key={post._id}
                       title={post.title}
                       ownerName={post.ownerName}
                       description={post.description}
                       likes={post.likes.length}
                       photo={post.photo}
-                      clickFunction={() => giveLike(post._id)}
-                    ></Card>
+                    ></UserCardAdmin>
                   );
                 })
                 .reverse()}
