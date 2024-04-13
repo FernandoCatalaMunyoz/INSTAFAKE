@@ -179,8 +179,6 @@ export const GetMyPosts = async (token) => {
 };
 
 export const DeletePost = async (_id, token) => {
-  console.log(_id, "id del post");
-  console.log(token, "token del post");
   const options = {
     method: "DELETE",
     headers: {
@@ -191,6 +189,28 @@ export const DeletePost = async (_id, token) => {
   try {
     const response = await fetch(`${root}post/${_id}`, options);
     console.log(response, "response");
+    if (!data.success) {
+      throw new Error(data.message);
+    }
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const CreatePost = async (token, post) => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(post),
+  };
+  try {
+    const response = await fetch(`${root}post`, options);
+    const data = await response.json();
+    console.log(data, "data");
     if (!data.success) {
       throw new Error(data.message);
     }

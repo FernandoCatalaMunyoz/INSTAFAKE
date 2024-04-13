@@ -43,21 +43,6 @@ export const Admin = () => {
     bringUsers();
   }, [users]);
 
-  const giveLike = async (id) => {
-    const fetched = await GiveLike(token, id);
-
-    setPosts(
-      posts.map((post) =>
-        post._id === posts._id
-          ? {
-              ...post,
-              likes: fetched.data.likes,
-            }
-          : post
-      )
-    );
-  };
-
   return (
     <div className="adminDesign">
       <div className="usersDesign">
