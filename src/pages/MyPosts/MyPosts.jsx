@@ -52,7 +52,9 @@ export const MyPosts = () => {
     try {
       const fetched = await CreatePost(token, post);
       console.log(fetched, "create post fetched");
-      setPost(fetched);
+      setPost(
+        posts.map((post) => post._id === posts._id) ? fetched.data : post
+      );
     } catch (error) {
       throw new Error("Cant create Post" + error.message);
     }

@@ -1,14 +1,17 @@
 import "./Home.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
+import { toDetail } from "../../app/slices/detailSlice";
 import { useEffect, useState } from "react";
 import { GetPosts, GiveLike } from "../../services/apiCalls";
 import { Card } from "../../common/Card/Card";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const rdxUser = useSelector(userData);
-
+  const dispatch = useDispatch();
   const token = rdxUser?.credentials?.token;
+  const navigate = useNavigate();
 
   const [posts, setPosts] = useState([]);
 
@@ -39,6 +42,12 @@ export const Home = () => {
       )
     );
   };
+
+  const toDetailPost = (post) => {
+    dispatch(toDetail({ detail: post }));
+
+    navigate("/detail");
+  };
   return (
     <>
       <div className="homeDesign">
@@ -63,6 +72,7 @@ export const Home = () => {
                         likes={post.likes.length}
                         photo={post.photo}
                         clickFunction={() => giveLike(post._id)}
+                        clickDetail={() => toDetailPost(post)}
                       ></Card>
                     );
                   })

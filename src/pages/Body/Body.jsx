@@ -7,6 +7,7 @@ import { Login } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import { Admin } from "../Admin/Admin";
 import { MyPosts } from "../MyPosts/MyPosts";
+import { DetailPost } from "../DetailPost/DetailPost";
 // import { Detail } from "../Detail/Detail";
 
 export const Body = () => {
@@ -19,7 +20,7 @@ export const Body = () => {
       <Route path="/admin" element={<Admin />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/myPosts" element={<MyPosts />} />
-      {/* <Route path="/detail" element={<Detail />} /> */}
+      <Route path="/detail" element={<DetailPost />} />
     </Routes>
   );
 };
