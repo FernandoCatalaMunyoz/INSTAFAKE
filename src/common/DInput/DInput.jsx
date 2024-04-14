@@ -9,10 +9,6 @@ export const DInput = ({
   onChangeFunction,
   onBlurFunction,
 }) => {
-  const handleInput = (e) => {
-    e.target.style.height = "inherit";
-    e.target.style.height = `${e.target.scrollHeight}px`;
-  };
   return (
     <textarea
       className={"inputDesign"}

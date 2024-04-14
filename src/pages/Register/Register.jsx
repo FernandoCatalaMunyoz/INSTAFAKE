@@ -59,10 +59,9 @@ export const Register = () => {
       }
 
       const fetched = await RegisterUser(user);
-      console.log(fetched, "fetcheado");
+
       if ((fetched.success = true)) {
         toast.success(fetched.message);
-        console.log("loggeado");
       }
       setTimeout(() => {
         navigate("/");

@@ -3,7 +3,7 @@ import "./MyPosts.css";
 import { useEffect, useState } from "react";
 import { CreatePost, DeletePost, GetMyPosts } from "../../services/apiCalls";
 import { userData } from "../../app/slices/userSlice";
-import { UserCardAdmin } from "../../common/userCardAmin/userCardAdmin";
+
 import { MyPostsCard } from "../../common/MyPostsCard/MyPostsCard";
 import { CInput } from "../../common/CInput/CInput";
 import { CButton } from "../../common/CButton/CButton";
@@ -29,7 +29,7 @@ export const MyPosts = () => {
     const bringMyPosts = async () => {
       try {
         const fetched = await GetMyPosts(token);
-        console.log(fetched, "my posts fetched");
+
         setPosts(fetched);
       } catch (error) {}
     };
@@ -41,7 +41,7 @@ export const MyPosts = () => {
   const deletePost = async (_id) => {
     try {
       const fetched = await DeletePost(_id, token);
-      console.log(fetched, "delete fetched");
+
       setPosts(posts.filter((post) => post._id !== _id));
     } catch (error) {
       throw new Error("Cant delete Post" + error.message);
@@ -51,7 +51,7 @@ export const MyPosts = () => {
   const createPost = async () => {
     try {
       const fetched = await CreatePost(token, post);
-      console.log(fetched, "create post fetched");
+
       // setPost(post.map((post) => post._id === posts._id) ? fetched.data : post);
     } catch (error) {
       throw new Error("Cant create Post" + error.message);

@@ -8,7 +8,6 @@ import { Profile } from "../Profile/Profile";
 import { Admin } from "../Admin/Admin";
 import { MyPosts } from "../MyPosts/MyPosts";
 import { DetailPost } from "../DetailPost/DetailPost";
-// import { Detail } from "../Detail/Detail";
 
 export const Body = () => {
   return (

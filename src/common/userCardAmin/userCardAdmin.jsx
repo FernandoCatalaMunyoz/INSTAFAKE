@@ -1,12 +1,5 @@
 import "./userCardAdmin.css";
-export const UserCardAdmin = ({
-  title,
-  ownerName,
-  photo,
-  description,
-  ownerId,
-  likes,
-}) => {
+export const UserCardAdmin = ({ title, ownerName, description, likes }) => {
   return (
     <div className="cardDesign">
       <div className="cardTitle">{title}</div>

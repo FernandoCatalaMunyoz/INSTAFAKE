@@ -1,12 +1,6 @@
 import "./UserCard.css";
 
-export const UserCard = ({
-  firstName,
-  lastName,
-  nickName,
-  email,
-  clickFunction,
-}) => {
+export const UserCard = ({ firstName, lastName, nickName, email }) => {
   return (
     <div className="userCardDesign">
       <div className="titleUserCard">

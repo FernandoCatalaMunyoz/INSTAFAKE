@@ -10,7 +10,7 @@ export const DetailPost = () => {
   const rdxUser = useSelector(userData);
   const token = rdxUser?.credentials?.token;
   const navigate = useNavigate();
-  console.log(rdxDetail, "rdxDetail");
+
   if (!token) {
     setTimeout(() => {
       navigate("/");

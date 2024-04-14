@@ -62,10 +62,8 @@ export const Login = () => {
           user: decodificado,
         };
 
-        console.log(fetched, "fetched");
         if ((fetched.success = true)) {
           toast.success(fetched.message);
-          console.log("loggeado");
         }
         dispatch(login({ credentials: passport }));
         setTimeout(() => {

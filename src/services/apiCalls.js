@@ -188,7 +188,7 @@ export const DeletePost = async (_id, token) => {
   };
   try {
     const response = await fetch(`${root}post/${_id}`, options);
-    console.log(response, "response");
+
     if (!data.success) {
       throw new Error(data.message);
     }
@@ -210,7 +210,7 @@ export const CreatePost = async (token, post) => {
   try {
     const response = await fetch(`${root}post`, options);
     const data = await response.json();
-    console.log(data, "data");
+
     if (!data.success) {
       throw new Error(data.message);
     }

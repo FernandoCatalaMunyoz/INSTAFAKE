@@ -62,7 +62,6 @@ export const Profile = () => {
 
   const updateData = async () => {
     try {
-      console.log(rdxUser, "rdx");
       const userDatatoUpdate = await UpdateProfile(
         rdxUser?.credentials?.token,
         user
@@ -73,7 +72,7 @@ export const Profile = () => {
       setLoadedData(false);
       setWrite("disabled");
     } catch (error) {
-      console.error("Error al actualizar el perfil", error);
+      return error;
     }
     setLoadedData(false);
   };
