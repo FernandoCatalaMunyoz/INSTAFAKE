@@ -54,6 +54,8 @@ LOGIN
 
 En Login, con las credenciales de email y contrseña que hemos introducido en el Login podremos acceder a nuestra pagina personalizada
 
+Credenciales usuario super_admin: - email: fernandocatalamunyoz@gmail.com - contraseña: Aa123456
+
 HOME/LOGGEADO
 
 ![alt text](img/Captura%20Home%20Loggeado.JPG)
