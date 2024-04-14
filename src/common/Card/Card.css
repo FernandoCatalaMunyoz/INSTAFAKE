@@ -1,21 +1,17 @@
 .cardDesign {
   height: auto;
-  width: 25em;
+  width: 40em;
+  color: black;
 
-  border-radius: 0.5em;
-  background-color: cadetblue;
-
-  transition: 0.5s;
+  border-radius: 10px;
+  background-color: white;
+  border: 0.1em solid black;
 
   display: flex;
   flex-direction: column;
   margin: 1em;
-}
 
-.cardDesign:hover {
-  transition: 0.5s;
-  background-color: lightblue;
-  transform: scale(1.15);
+  padding: 1em;
 }
 
 .avatarDesign {
@@ -24,17 +20,32 @@
 }
 
 .cardTitle {
-  font-weight: bold;
-  font-size: larger;
-}
+  height: 3em;
+  width: 35em;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: large;
+  font-weight: bold;
+}
+.cardDescription {
+  height: 10em;
+  width: 36em;
+  background-color: rgb(161, 217, 230);
+  padding: 1em;
+  border: 0.1em solid black;
+  border-radius: 10px;
+}
 .likeButton {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  width: 3em;
-  background-color: green;
+  width: 7em;
+  margin: 0.5em;
+  background-color: beige;
 }
 .likeSection {
   display: flex;
@@ -44,8 +55,27 @@
 .cardLikes {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 10px;
+  height: 1em;
+}
+.likeButton:hover {
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+}
+.detailPost {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin: 0.5em;
-  padding-left: 0.5em;
+  width: 4em;
+  border: 0.1em solid black;
+  border-radius: 10px;
+}
+.detailPost:hover {
+  cursor: pointer;
+  font-weight: bold;
 }

@@ -28,9 +28,7 @@ export const Header = () => {
               <div>
                 <CLink path={"/admin"} title={"Admin"} />
               </div>
-            ) : (
-              <div>No eres super admin</div>
-            )}
+            ) : null}
             <div
               className="out-design"
               onClick={() => dispatch(logout({ credentials: "" }))}

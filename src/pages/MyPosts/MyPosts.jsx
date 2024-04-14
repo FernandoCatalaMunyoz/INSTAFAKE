@@ -38,11 +38,11 @@ export const MyPosts = () => {
     }
   });
 
-  const deletePost = async (id) => {
+  const deletePost = async (_id) => {
     try {
-      const fetched = await DeletePost(id, token);
+      const fetched = await DeletePost(_id, token);
       console.log(fetched, "delete fetched");
-      setPosts(posts.filter((post) => post._id !== id));
+      setPosts(posts.filter((post) => post._id !== _id));
     } catch (error) {
       throw new Error("Cant delete Post" + error.message);
     }
@@ -52,9 +52,7 @@ export const MyPosts = () => {
     try {
       const fetched = await CreatePost(token, post);
       console.log(fetched, "create post fetched");
-      setPost(
-        posts.map((post) => post._id === posts._id) ? fetched.data : post
-      );
+      // setPost(post.map((post) => post._id === posts._id) ? fetched.data : post);
     } catch (error) {
       throw new Error("Cant create Post" + error.message);
     }

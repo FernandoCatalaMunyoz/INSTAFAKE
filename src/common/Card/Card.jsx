@@ -8,13 +8,16 @@ export const Card = ({
   likes,
   clickFunction,
   clickDetail,
+  createdAt,
 }) => {
   return (
     <div className="cardDesign" onClick={clickFunction}>
       <div className="cardTitle">{title}</div>
       <div className="ownerName">{ownerName}</div>
       <div className="cardDescription">{description}</div>
-      <div onClick={clickDetail}>Detail</div>
+      <div onClick={clickDetail} className="detailPost">
+        Detail
+      </div>
       <div className="cardLikes">
         <div>Likes:</div>
         <div>{likes}</div>

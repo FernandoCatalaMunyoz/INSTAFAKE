@@ -1,0 +1,41 @@
+.myPostsCardDesign {
+  background-color: white;
+  height: 20em;
+  width: 40em;
+  color: black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 0.1em solid black;
+}
+.myPostTitle {
+  height: 3em;
+  width: 35em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: large;
+  font-weight: bold;
+}
+.myPostDescription {
+  height: 10em;
+  width: 36em;
+  background-color: rgb(161, 217, 230);
+  padding: 1em;
+  border: 0.1em solid black;
+  border-radius: 10px;
+}
+.cardLikes {
+  height: 5em;
+  width: 10em;
+}
+.likeButton {
+  width: 7em;
+  margin: 0.5em;
+  background-color: beige;
+}

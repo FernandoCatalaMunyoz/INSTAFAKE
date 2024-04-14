@@ -2,23 +2,26 @@
   height: 88.3vh;
   width: 99vw;
 
-  background-color: beige;
+  background-color: rgb(161, 217, 230);
 
   display: flex;
   flex-direction: row;
   justify-content: center;
   overflow: auto;
   align-items: center;
+
+  scrollbar-color: red;
 }
+
 .cardsRoaster {
   flex-wrap: wrap-reverse;
 }
 
 .postDesign {
-  height: 90vh;
+  height: 88.3vh;
   width: 50vw;
 
-  background-color: beige;
+  background-color: rgb(161, 217, 230);
 
   display: flex;
   flex-wrap: wrap;
@@ -27,10 +30,10 @@
   align-items: center;
 }
 .usersDesign {
-  height: 90vh;
+  height: 88.3vh;
   width: 50vw;
 
-  background-color: beige;
+  background-color: rgb(161, 217, 230);
 
   display: flex;
   flex-wrap: wrap;
